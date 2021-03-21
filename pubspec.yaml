@@ -1,0 +1,32 @@
+name: kitchencar
+description: A new Flutter project.
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: any
+  flutter_riverpod: any
+  http: any
+  flutter_map: any
+  flutter_native_splash: any
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+
+flutter_native_splash:
+  image: "assets/icon/small-logo.png" 
+  color: "4DD0E1"
+
+assets:
+  - assets/
+  - images/
