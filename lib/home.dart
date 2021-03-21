@@ -6,6 +6,10 @@ import 'package:kitchencar/spotpage.dart';
 import 'package:kitchencar/stall.dart';
 import 'package:kitchencar/stallpage.dart';
 import 'package:latlong/latlong.dart';
+import 'package:smart_forms/models/field.model.dart';
+import 'package:smart_forms/models/form.model.dart';
+import 'package:smart_forms/smart_forms.dart';
+import 'package:smart_forms/utils/enums.dart';
 
 // 屋台村リスト
 final spotListProvider = FutureProvider<List<Spot>>((ref) async {
@@ -20,7 +24,7 @@ final stallListProvider = FutureProvider<List<Stall>>((ref) async {
 List menuItems = [
   {"icon": Icons.landscape, "name": "屋台村"},
   {"icon": Icons.directions_car_outlined, "name": "キッチンカー"},
-  {"icon": Icons.map, "name": "地図"},
+  {"icon": Icons.map, "name": "マップ"},
   {"icon": Icons.question_answer, "name": "ご意見"},
 ];
 
@@ -37,6 +41,32 @@ class _HomePageState extends State<HomePage> {
 
   // 地図上のマーカ
   LatLng markerCoords = LatLng(34.7676042, 137.3828518);
+
+  FormModel _form;
+  _formDone(Map<String, dynamic> res) {
+    print(res);
+  }
+
+  @override
+  void initState() {
+    _form = FormModel(
+        submitButton: "送信する",
+        resetButton: "リセット",
+        name: "ご意見",
+        fields: [
+          FieldModel(
+            label: "ご意見はありますか？",
+            type: Types.number,
+            vallidate: true,
+          ),
+          FieldModel(
+            label: "ご意見はありますか2？",
+            type: Types.text,
+            vallidate: true,
+          )
+        ]);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -115,6 +145,13 @@ class _HomePageState extends State<HomePage> {
               ),
             );
           }),
+          Container(
+            padding: EdgeInsets.all(20),
+            child: SmartForms(
+              form: _form,
+              callback: _formDone,
+            ),
+          ),
         ],
         physics: NeverScrollableScrollPhysics(),
       ),

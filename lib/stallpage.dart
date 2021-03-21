@@ -2,6 +2,11 @@ import 'package:flutter/material.dart';
 
 import 'stall.dart';
 
+TextStyle tStyle1 = TextStyle(fontSize: 15, color: Colors.blue[900]);
+TextStyle dStyle1 = TextStyle(fontSize: 10, color: Colors.blue[600]);
+TextStyle tStyle2 = TextStyle(fontSize: 20, color: Colors.blue[900]);
+TextStyle dStyle2 = TextStyle(fontSize: 15, color: Colors.blue[600]);
+
 // 屋台のGridView
 class StallPage extends StatelessWidget {
   final List<Stall> stalls;
@@ -43,7 +48,7 @@ class StallCard extends StatelessWidget {
                     alignment: Alignment.centerLeft,
                     decoration: BoxDecoration(
                       image: DecorationImage(
-                        image: Image.asset(stall.imgUrl).image,
+                        image: NetworkImage(stall.imgUrl),
                         fit: BoxFit.fill,
                       ),
                     ),
@@ -61,7 +66,7 @@ class StallCard extends StatelessWidget {
                         Expanded(
                           child: Text(
                             stall.name,
-                            style: Theme.of(context).textTheme.subtitle2,
+                            style: tStyle1,
                             overflow: TextOverflow.ellipsis,
                           ),
                         ),
@@ -71,8 +76,8 @@ class StallCard extends StatelessWidget {
                       alignment: Alignment.bottomLeft,
                       child: Text(
                         stall.desc,
+                        style: dStyle1,
                         maxLines: 1,
-                        style: Theme.of(context).textTheme.caption,
                         overflow: TextOverflow.ellipsis,
                       ),
                     ),
@@ -148,20 +153,20 @@ class _StallDetailState extends State<StallDetail> {
                     // 屋台名
                     Text(
                       widget.stall.name,
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w900,
-                      ),
+                      style: tStyle2,
+                    ),
+                    SizedBox(height: 10),
+                    // メニュー
+                    Text(
+                      widget.stall.menu,
+                      style: dStyle2,
                     ),
                     SizedBox(height: 10),
                     // 屋台の説明
                     Text(
                       widget.stall.desc,
                       maxLines: 10,
-                      style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w400,
-                          color: Colors.black),
+                      style: dStyle2,
                       strutStyle: StrutStyle(fontSize: 12, height: 1.2),
                     ),
                   ]),

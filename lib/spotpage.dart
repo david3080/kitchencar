@@ -2,6 +2,11 @@ import 'package:flutter/material.dart';
 
 import 'spot.dart';
 
+TextStyle tStyle1 = TextStyle(fontSize: 15, color: Colors.blue[900]);
+TextStyle dStyle1 = TextStyle(fontSize: 10, color: Colors.blue[600]);
+TextStyle tStyle2 = TextStyle(fontSize: 20, color: Colors.blue[900]);
+TextStyle dStyle2 = TextStyle(fontSize: 15, color: Colors.blue[600]);
+
 // 屋台村のGridView
 class SpotPage extends StatelessWidget {
   final List<Spot> spots;
@@ -61,7 +66,7 @@ class SpotCard extends StatelessWidget {
                         Expanded(
                           child: Text(
                             spot.name,
-                            style: Theme.of(context).textTheme.subtitle2,
+                            style: tStyle1,
                             overflow: TextOverflow.ellipsis,
                           ),
                         ),
@@ -72,7 +77,7 @@ class SpotCard extends StatelessWidget {
                       child: Text(
                         spot.desc,
                         maxLines: 1,
-                        style: Theme.of(context).textTheme.caption,
+                        style: dStyle1,
                         overflow: TextOverflow.ellipsis,
                       ),
                     ),
@@ -148,20 +153,14 @@ class _SpotDetailState extends State<SpotDetail> {
                     // 屋台名
                     Text(
                       widget.spot.name,
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w900,
-                      ),
+                      style: tStyle2,
                     ),
                     SizedBox(height: 10),
                     // 屋台場所の説明
                     Text(
                       widget.spot.desc,
                       maxLines: 10,
-                      style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w400,
-                          color: Colors.black),
+                      style: dStyle2,
                       strutStyle: StrutStyle(fontSize: 12, height: 1.2),
                     ),
                   ]),

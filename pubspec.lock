@@ -261,6 +261,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.99"
+  smart_forms:
+    dependency: "direct main"
+    description:
+      name: smart_forms
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.3"
   source_span:
     dependency: transitive
     description:
